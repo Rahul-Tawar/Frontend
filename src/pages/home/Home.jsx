@@ -3,6 +3,7 @@ import HeroBanner from './HeroBanner'
 import TenderList from './TenderList'
 import Features from './Features'
 import Nav from '../../components/Nav'
+import { Footer } from '../../components/Footer'
 
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
       <HeroBanner />
       <TenderList />
       <Features /> 
-      
+      <Footer />  
     </>
   )
 }
