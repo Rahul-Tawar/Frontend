@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -13,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 const TenderList = () => {
   const [tenders, setTenders] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchTenders = async () => {
@@ -37,8 +39,7 @@ const TenderList = () => {
   }, [tenders]);
 
   const handleTenderClick = (tender) => {
-    setSelectedTender(tender);
-    console.log('Selected Tender:', tender);
+    navigate(`/tender/${tender.id}`);
   };
 
   if (error) {
@@ -46,7 +47,7 @@ const TenderList = () => {
   }
 
   return (
-    <div className='flex flex-wrap gap-4 flex-row mx-auto'>
+    <div className='flex flex-wrap gap-4 flex-row mx-auto '>
       {tenders.map((tender) => (
         <Card key={tender.id} className="h-48 w-96 max-w-sm">
           <CardHeader>
@@ -66,7 +67,7 @@ const TenderList = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button variant="outline" size="sm" onClick={() => handleTenderClick(tender)} className="hover:bg-orange-500">
+            <Button variant="outline" size="sm" onClick={() => handleTenderClick(tender)} className="bg-orange-400 hover:bg-orange-500">
               View Tender
             </Button>
           </CardFooter>
